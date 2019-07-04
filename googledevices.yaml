@@ -1,0 +1,20 @@
+googlehome:
+  devices:
+      #Bedroom
+    - host: 192.168.0.10
+      #Gameroom
+    - host: 192.168.0.154
+      #KitchenHub
+    - host: 192.168.0.199
+      #LivingRoom
+    - host: 192.168.0.124
+      #Kitchen
+    - host: 192.168.0.210
+      #EvanRoom
+    - host: 192.168.0.117
+      #EvanBathRoom
+    - host: 192.168.0.116
+      #Garage
+    - host: 192.168.0.112
+      #Bathroom
+    - host: 192.168.0.249

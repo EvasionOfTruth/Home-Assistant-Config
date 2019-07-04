@@ -1,0 +1,41 @@
+  usb_path: /dev/serial/by-id/usb-0658_0200-if00
+#  config_path: /home/hass/.homeassistant/config
+  polling_interval: 30000
+#  debug: true
+  autoheal: true
+  network_key: 0x6E, 0x4A, 0x6E, 0x1E, 0x98, 0xB8, 0x21, 0x4C, 0x47, 0xC9, 0x8A, 0x2C, 0x2A, 0x5E, 0x57, 0x51
+  device_config:
+    light.dollhouse_level:
+      polling_intensity: 2
+    light.buster_light:
+      polling_intensity: 2
+    light.salt_light:
+      polling_intensity: 2
+    light.evandesk:
+      polling_intensity: 2
+#    light.zooz_unknown_typeb112_id261c_level:
+#      polling_intensity: 2
+#    light.zooz_unknown_typeb112_id261c_level_2:
+#      polling_intensity: 2
+#    light.zooz_unknown_typeb112_id261c_level_3:
+#      polling_intensity: 2
+#    light.zooz_unknown_typeb112_id261c_level_4:
+#      polling_intensity: 2
+#    light.zooz_unknown_typeb112_id261c_level_5:
+#      polling_intensity: 2
+#       refresh_value: true
+#       delay: 4
+#    light.lvngroomlght_back_level:
+#      polling_intensity: 1
+#    light.lvngroomlght_frnt_level:
+#      polling_intensity: 1
+#    light.xmastree_level:
+#      polling_intensity: 2
+#    light.nightstand_level:
+#      polling_intensity: 1
+#    light.wall_level:
+#      polling_intensity: 1
+#    light.porch_level:
+#      polling_intensity: 1
+#    light.garage_level:
+#      polling_intensity: 1

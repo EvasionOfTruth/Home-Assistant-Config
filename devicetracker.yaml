@@ -1,0 +1,36 @@
+#  - platform: googlehome
+    #Gameroom Mini
+#    host: 192.168.0.154
+#  - platform: googlehome
+    #Livingroom Mini
+#    host: 192.168.0.124
+#  - platform: googlehome
+    #Evansroom Mini
+#    host: 192.168.0.117
+#  - platform: googlehome
+    #Kitchen Hub
+#    host: 192.168.0.199
+#  - platform: googlehome
+    #Bedroom
+#    host: 192.168.0.10
+#  - platform: googlehome
+    #Evans Bathroom Mini
+#    host: 192.168.0.116
+#  - platform: googlehome
+    #Garage Mini
+#    host: 192.168.0.112
+#  - platform: googlehome
+    #Kitchen
+#    host: 192.168.0.210
+#  - platform: nmap_tracker
+#    hosts: 192.168.0.1/23
+#    home_interval: 10
+#    exclude:
+#     - 192.168.0.12
+#     - 192.168.0.1
+  - platform: synology_srm
+    host: 192.168.0.1
+    username: buster
+    password: !secret srmpassword
+    interval_seconds: 45
+    consider_home: 300

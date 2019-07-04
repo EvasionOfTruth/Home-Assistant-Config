@@ -1,0 +1,277 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat 
+  longitude: !secret home_long 
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 116
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/New_York
+  customize: !include customize.yaml
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.0.0/23
+        - 127.0.0.1
+    - type: homeassistant
+
+automation: !include automations.yaml
+binary_sensor: !include binary_sensor.yaml
+cloud: #!include cloud.yaml
+config: 
+conversation:
+device_tracker: !include devicetracker.yaml
+discovery:
+frontend:
+  themes: !include themes.yaml
+#google_assistant: !include google_assistant.yaml
+group: !include groups.yaml
+#hacs:
+#  token: !secret hacs_token
+history:
+ifttt:
+  key: !secret iftt
+input_boolean: !include input_boolean.yaml
+input_datetime: !include input_datetime.yaml
+#input_number: !include input_number.yaml
+input_select: !include input_select.yaml
+logger:
+map:
+media_player: !include mediaplayers.yaml
+#owntracks:
+person:
+scene: !include scenes.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
+shell_command: !include shell.yaml
+stream:
+sun:
+system_health:
+switch: !include switchconfig.yaml
+updater:
+  include_used_components: true
+zone: !include zone.yaml
+zwave: !include zwaveconfig.yaml
+
+camera:
+  - platform: mjpeg
+    name: Porch Camera
+    mjpeg_url: http://192.168.0.111:91/mjpg/porch
+    authentication: basic
+  - platform: mjpeg
+    name: Back Camera
+    mjpeg_url: http://192.168.0.111:91/mjpg/BkDr
+    authentication: basic
+  - platform: mjpeg
+    name: Driveway Camera
+    mjpeg_url: http://192.168.0.111:91/mjpg/Drvw
+    authentication: basic
+cover:
+  - platform: mqtt
+    name: "left"
+    state_topic: "cmnd/12/POWER2"
+    command_topic: "cmnd/sonoff12/POWER"
+    payload_open: "ON"
+    payload_close: "ON"
+    payload_stop: "ON"
+    state_open: "ON"
+    state_closed: "OFF"
+    optimistic: false
+    retain: false
+  - platform: mqtt
+    name: "right"
+    state_topic: "cmnd/13/POWER2"
+    command_topic: "cmnd/sonoff13/POWER"
+    payload_open: "ON"
+    payload_close: "ON"
+    payload_stop: "ON"
+    state_open: "OFF"
+    state_closed: "ON"
+    optimistic: false
+    retain: false
+http:
+   ssl_certificate: /config/certs/fullchain1.pem
+   ssl_key: /config/certs/privkey1.pem
+   base_url: https://jwf79.no-ip.biz:8123
+   ip_ban_enabled: True
+   login_attempts_threshold: 5
+influxdb:
+  host: 192.168.0.12
+  database: hass
+  include:
+    domains:
+      - light
+      - sensor
+      - climate
+      - device_tracker
+      - switch
+light:
+  - platform: flux_led
+    devices: 
+      192.168.0.218:
+        name: evan_fort
+        mode: "rgb"
+      192.168.0.245:
+        name: doll_house_back
+        mode: "rgb"
+      192.168.0.246:
+        name: doll_house_front
+        mode: "rgb"
+logbook:
+  exclude:
+    entities:
+      - sensor.date
+      - sensor.date_time
+      - sensor.time_utc
+      - sensor.time_date
+      - sensor.time
+      - input_boolean.node_red
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature 
+      - sensor.yr_symbol
+      - sensor.dark_sky_daily_summary
+    domains:
+      - sun
+      - weblink
+mqtt:
+  broker: 192.168.0.12
+  port: 1883
+  client_id: home-assistant-1
+  keepalive: 60
+  username: Buster
+  password: !secret mqtt
+  protocol: 3.1
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_secret
+notify:
+  - platform: pushbullet
+    name: Buster
+    api_key: !secret pushbullet
+  - platform: html5
+    name: goopush
+    vapid_pub_key: !secret html_pub_key
+    vapid_prv_key: !secret html_prv_key
+    vapid_email: !secret email
+panel_custom:
+  - name: zwavegraph2
+    sidebar_title: ZWave Graph2
+    sidebar_icon: mdi:access-point-network
+    url_path: zwave 
+panel_iframe:
+  node_red:
+    title: 'Node-Red'
+    icon: mdi:emoticon-poop
+    url: 'https://jwf79.no-ip.biz:18800'
+  tautulli:
+    title: 'Plex Stats'
+    icon: mdi:plex
+    url: 'https://192.168.0.12:8282/home'
+  tasmoadmin:
+    title: 'TasmoAdmin'
+    url: 'https://192.168.0.12:9541/devices'
+recorder:
+  db_url: !secret mysql
+  exclude:
+    domains:
+      - automation
+      - weblink
+#      - updater
+      - sun
+      - group
+    entities:
+      - sun.sun   # Don't record sun data
+      - sensor.last_boot
+      - sensor.date
+      - sensor.date_time
+      - sensor.time_utc
+      - sensor.time_date
+      - sensor.time
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_temperature
+      - sensor.yr_symbol
+      - sensor.dark_sky_daily_summary
+      - group.date
+      - group.temps1
+      - group.temps2
+      - group.temps3
+      - group.upstairs
+remote:
+  - platform: harmony
+    name: Harmony
+    host: 192.168.0.92
+  - platform: harmony
+    name: Watchkodi
+    host: 192.168.0.92
+    activity: 23483239
+  - platform: harmony
+    name: WatchChromecast
+    host: 192.168.0.92
+    activity: 23483470
+  - platform: harmony
+    name: PlayPS4
+    host: 192.168.0.92
+    activity: 23483324
+  - platform: harmony
+    name: Playxbox
+    host: 192.168.0.92
+    activity: 34890593
+  - platform: harmony
+    name: Playswitch
+    host: 192.168.0.92
+    activity: 29199816
+  - platform: harmony
+    name: WatchNetflix
+    host: 192.168.0.92
+    activity: 34885876
+  - platform: harmony
+    name: PlayWiiU
+    host: 192.168.0.92
+    activity: 34885322
+  - platform: harmony
+    name: PowerOff
+    host: 192.168.0.92
+    activity: -1
+sabnzbd:
+  api_key: !secret sabnzbd
+  host: 192.168.0.12
+  name: sab
+  port: 5052
+  sensors:
+    - current_status
+    - speed
+    - queue_size
+    - queue_remaining
+    - disk_size
+    - disk_free
+    - queue_count
+    - day_size
+    - week_size
+    - month_size
+    - total_size
+speedtestdotnet:
+  scan_interval:
+    hours: 6
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+tts:
+  - platform: google_translate
+    service_name: google_say
+    cache: true

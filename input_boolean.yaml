@@ -1,0 +1,84 @@
+## Input Boolean  ##
+  notify_harmony:
+    name: Harmony status
+    initial: off
+    icon: mdi:remote
+  home_occupied:
+    name: Home Occupied
+    initial: off
+    icon: mdi:account-group-outline
+  lyssa_home:
+    name: Lyssa Home
+    initial: off
+    icon: mdi:human-female
+  buster_home:
+    name: Buster Home
+    initial: off
+    icon: mdi:human-male
+  guest_home:
+    name: House Guests
+    initial: off
+    icon: mdi:account-multiple-plus
+  kitchen_motion:
+    name: Kitchen Motion
+    initial: on
+  bathroom_motion:
+    name: Bathroom Motion
+    initial: on
+  evan_bathroom_motion:
+    name: Evan Bathroom Motion
+    initial: on
+  backdoor_motion_light:
+    name: Back door switch
+    initial: on
+  frontdoor_motion_light:
+    name: Front door switch
+    initial: on
+  homeaway:
+    name: Home Away
+    initial: on
+  backdoor_opened:
+    name: Back Door Opened
+    initial: on
+  frontdoor_opened:
+    name: Front Door Opened
+    initial: on
+  sidedoor_opened:
+    name: Side Door Opened
+    initial: on
+  garage_door_opened:
+    name: Garage Door Opened
+    initial: on
+  garage_backdoor_opened:
+    name: Garage Back Door Opened
+    initial: on
+  turn_off_closet_light:
+    name: Turn Off Closet Light
+    initial: on
+  evan_turn_off_closet_light:
+    name: Turn Off Evan Closet Light
+    initial: on
+  turn_off_pantry:
+    name: Turn Off Pantry Light
+    initial: on
+  lights_sunrise:
+    name: Turn Off Lights at Sunrise
+    initial: on
+  lights_sunset:
+    name: Turn on Lights at Sunset
+    initial: on
+  evan_heat_on:
+    name: Evan Heat On
+    initial: on
+  evan_heat_off:
+    name: Evan Heat Off
+    initial: on
+  porch_motion:
+    name: Porch Motion
+    initial: off
+  node_red:
+    name: Node Red Watchdog
+    initial: on
+  
+  
+  

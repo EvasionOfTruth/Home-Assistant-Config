@@ -1,0 +1,168 @@
+ - platform: mqtt
+   name:  "Left Light"
+   command_topic: "cmnd/sonoff01/power"
+   state_topic: "stat/sonoff01/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false
+ - platform: mqtt
+   name:  "Crazy Light"
+   command_topic: "cmnd/sonoff02/power"
+   state_topic: "stat/sonoff02/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false
+ - platform: mqtt
+   name:  "Bedroom light"
+   command_topic: "cmnd/sonoff03/power"
+   state_topic: "stat/sonoff03/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false
+ - platform: mqtt
+   name:  "Evan Tree"
+   command_topic: "cmnd/sonoff04/power"
+   state_topic: "stat/sonoff04/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false
+ - platform: mqtt
+   name:  "Strip05"
+   command_topic: "cmnd/sonoff05/power"
+   state_topic: "stat/sonoff05/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false
+ - platform: mqtt
+   name:  "Strip06"
+   command_topic: "cmnd/sonoff06/power"
+   state_topic: "stat/sonoff06/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false
+ - platform: mqtt
+   name:  "Strip07"
+   command_topic: "cmnd/sonoff07/power"
+   state_topic: "stat/sonoff07/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false
+ - platform: mqtt
+   name:  "Strip10"
+   command_topic: "cmnd/sonoff10/power"
+   state_topic: "stat/sonoff10/POWER"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   retain: false   
+ - platform: mqtt
+   name: "Server Fan"
+   command_topic: "cmnd/sonoff11/power"
+   state_topic: "stat/sonoff11/POWER"
+   availability_topic: "tele/sonoff11/LWT"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   payload_available: "Online"
+   payload_not_available: "Offline"
+   retain: false
+ - platform: mqtt
+   name: "sonoff14"
+   command_topic: "cmnd/sonoff14/power"
+   state_topic: "stat/sonoff14/POWER"
+   availability_topic: "tele/sonoff14/LWT"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   payload_available: "Online"
+   payload_not_available: "Offline"
+   retain: false
+ - platform: mqtt
+   name: "Toaster"
+   command_topic: "cmnd/sonoff15/power"
+   state_topic: "stat/sonoff15/POWER"
+   availability_topic: "tele/sonoff15/LWT"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   payload_available: "Online"
+   payload_not_available: "Offline"
+   retain: false
+ - platform: mqtt
+   name: "Doll House Heater"
+   command_topic: "cmnd/sonoff16/power"
+   state_topic: "stat/sonoff16/POWER"
+   availability_topic: "tele/sonoff16/LWT"
+   qos: 1
+   payload_on: "ON"
+   payload_off: "OFF"
+   payload_available: "Online"
+   payload_not_available: "Offline"
+   retain: false
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/grafana
+   name: Grafana
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/minecrft
+   name: MineCraft
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/plex
+   name: Plex
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/mynodered
+   name: NodeRed
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/sonarr
+   name: Sonarr
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/radarr
+   name: Radarr
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/sabnzbd
+   name: Sabnzbd
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/influxdb
+   name: InfluxDB
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/headphones-lys
+   name: Headphones Lyssa
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+ - platform: rest
+   resource: http://192.168.0.12:8126/container/headphones-bus
+   name: Headphones Buster
+   body_on: '{"state": "start"}'
+   body_off: '{"state": "stop"}'
+   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

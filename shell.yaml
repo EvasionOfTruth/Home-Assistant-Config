@@ -1,0 +1,2 @@
+#rtl_433: "python3 /home/hass/.homeassistant/433.py0"
+  zwave_update: /bin/bash /home/hass/.homeassistant/Zwave-ConnectionMap/mapping.sh

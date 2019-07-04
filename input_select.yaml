@@ -1,0 +1,22 @@
+### Input Select ###
+remote:
+  name: Harmony Hub
+  options:
+    - PowerOff
+    - Play PS4
+    - Watch Chromecast
+    - Watch Kodi
+    - Play XBox
+    - Play Switch
+    - Watch Roku
+    - Watch Netflix
+    - Play Wii U
+  initial: PowerOff
+  icon: mdi:remote
+    
+company:
+  name: "Company"
+  options:
+   - "enabled"
+   - "disabled"
+  initial: "disabled"

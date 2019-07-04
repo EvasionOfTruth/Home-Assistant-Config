@@ -1,0 +1,25 @@
+### Zones ###
+- name: Work
+  latitude: !secret work_lat
+  longitude: !secret work_long
+  radius: 1000
+    
+- name: DayCare
+  latitude: !secret daycare_lat
+  longitude: !secret daycare_long
+  radius: 150
+
+- name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  radius: 1000
+  
+- name: Evan_School
+  latitude: !secret Evan_School_lat
+  longitude: !secret Evan_School_long
+  radius: 200
+  
+#- name: NanaHouse
+#  latitude: !secret nana_lat
+#  longitude: !secret nana_long
+#  radius: 200

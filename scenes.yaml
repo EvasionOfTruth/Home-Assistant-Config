@@ -1,0 +1,90 @@
+  - name:  shutdown
+    entities:
+      light.lvngroomlght_back_level: off
+      light.lvngroomlght_frnt_level: off
+      light.nightstand_level: off
+      light.stairs_level: off
+      remote.harmony: off
+      light.wall_level: off
+      light.xmastree_level: off
+      switch.closet_switch: off
+  - name:  movie time
+    entities:
+      light.lvngroomlght_back_level:
+        state: on
+        brightness: 3
+      light.lvngroomlght_frnt_level:
+        state: on
+        brightness: 3
+  - name:  living room bright
+    entities:
+      light.lvngroomlght_back_level:
+        state: on
+        brightness: 255
+      light.lvngroomlght_frnt_level:
+        state: on
+        brightness: 255
+  - name:  bedroom dim
+    entities:
+      light.nightstand_level:
+        state: on
+        brightness: 3
+      light.wall_level:
+        state: on
+        brightness: 3
+  - name:  bedroom bright
+    entities:
+      light.nightstand_level:
+        state: on
+        brightness: 255
+      light.wall_level_15_0:
+        state: on
+        brightness: 255
+  - name:  Bed red
+    entities:
+      light.bedroom_led:
+        state: on
+        brightness: 180
+        rgb_color: [255,0,0]
+  - name:  Bed blue
+    entities:
+      light.bedroom_led:
+        state: on
+        brightness: 180
+        rgb_color: [0,0,255]
+  - name:  Bed purple
+    entities:
+      light.bedroom_led:
+        state: on
+        brightness: 180
+        rgb_color: [255,0,255]
+  - name:  Bed white
+    entities:
+      light.bedroom_led:
+        state: on
+        brightness: 180
+        rgb_color: [255,255,255]
+  - name:  Fort red
+    entities:
+      light.evan_fort:
+        state: on
+        brightness: 180
+        rgb_color: [255,0,0]
+  - name:  Fort blue
+    entities:
+      light.evan_fort:
+        state: on
+        brightness: 180
+        rgb_color: [0,0,255]
+  - name:  Fort purple
+    entities:
+      light.evan_fort:
+        state: on
+        brightness: 180
+        rgb_color: [255,0,255]
+  - name:  Fort white
+    entities:
+      light.evan_fort:
+        state: on
+        brightness: 180
+        rgb_color: [255,255,255]

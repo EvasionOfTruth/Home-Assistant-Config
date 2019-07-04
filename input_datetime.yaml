@@ -1,0 +1,13 @@
+## Input DateTime ##
+  alarm:
+    name: Input with both date and time
+    has_date: true
+    has_time: true
+  evanalarm:
+    name: Input with only time
+    has_date: false
+    has_time: true
+#  only_date:
+#    name: Input with only date
+#    has_date: true
+#    has_time: false

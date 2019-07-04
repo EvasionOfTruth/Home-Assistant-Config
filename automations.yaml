@@ -1,0 +1,232 @@
+- id: harmony
+  alias: Remote external update Media Center
+  trigger:
+    platform: state
+    entity_id: remote.harmony
+  action:
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.remote
+      option: '{{ states.remote.harmony.attributes.current_activity }}'
+- id: harmony_Kodi_notify
+  alias: Watch Kodi started from Harmony Hub
+  trigger:
+    platform: state
+    entity_id: remote.harmony
+  condition:
+    condition: template
+    value_template: '{{ trigger.to_state.attributes.current_activity == "Watch Kodi"
+      }}'
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.notify
+- id: harmony_off_notify
+  alias: PowerOff started from Harmony Hub
+  trigger:
+    platform: state
+    entity_id: remote.harmony
+  condition:
+    condition: template
+    value_template: '{{ trigger.to_state.attributes.current_activity == "PowerOff"
+      }}'
+  action:
+    service: input_boolean.turn_off
+    entity_id: input_boolean.notify
+- id: harmony_start
+  alias: Remote start activity from input select media center
+  trigger:
+    platform: state
+    entity_id: input_select.remote
+  action:
+    service: script.turn_on
+    entity_id: script.input_select_harmony
+- id: zwaveheal
+  alias: Heal Z-Wave Network
+  trigger:
+    platform: time
+    at: '2:31:00'
+  hide_entity: false
+  action:
+    service: zwave.heal_network
+- id: '1543287837442'
+  alias: GameRoom Heat Off
+  trigger:
+  - above: '68'
+    entity_id: sensor.filtered_gameroom_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.strip06
+    service: switch.turn_off
+- id: GameRoom Heat On
+  alias: GameRoom Heat On
+  trigger:
+  - below: '66'
+    entity_id: sensor.filtered_gameroom_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_on
+    entity_id: switch.strip06
+- id: '1543290879945'
+  alias: Evan Heat On
+  trigger:
+  - below: '66'
+    entity_id: sensor.filtered_evan_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_on
+    entity_id: switch.strip10
+- id: Evan Heat Off
+  alias: Evan Heat Off
+  trigger:
+  - above: '68'
+    entity_id: sensor.filtered_evan_temperature
+    platform: numeric_state
+  - above: '70'
+    entity_id: sensor.filtered_evan_temperature
+    platform: numeric_state
+  - above: '72'
+    entity_id: sensor.filtered_evan_temperature
+    platform: numeric_state
+  - above: '75'
+    entity_id: sensor.filtered_evan_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.strip10
+    service: switch.turn_off
+- id: Master Heat On
+  alias: Master Heat On
+  trigger:
+  - below: '66'
+    entity_id: sensor.filtered_bedroom_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_on
+    entity_id: switch.strip07
+- id: Master Heat Off
+  alias: Master Heat Off
+  trigger:
+  - above: '68'
+    entity_id: sensor.filtered_bedroom_temperature
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.strip07
+    service: switch.turn_off
+- id: Sonoff Update on start
+  alias: Power state on HA start-up
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/state
+      payload: ''
+- id: '1545663679178'
+  alias: Garage Lights - Open
+  trigger:
+  - entity_id: cover.left
+    platform: state
+    to: open
+  - entity_id: cover.right
+    platform: state
+    to: open
+  condition:
+  - condition: state
+    entity_id: binary_sensor.bckdrsensr_sensor
+    state: 'on'
+  action:
+  - data:
+      brightness: 255
+    entity_id: switch.garage_back1
+    service: light.turn_on
+  - data:
+      brightness: 255
+    entity_id: switch.garage_front1
+    service: light.turn_on
+- id: '1545663179178'
+  alias: Garage Lights - Closed
+  trigger:
+  - entity_id: cover.left
+    from: open
+    platform: state
+    to: closed
+  - entity_id: cover.right
+    from: open
+    platform: state
+    to: closed
+  condition: []
+  action:
+  - entity_id: switch.garage_back1
+    service: light.turn_off
+  - entity_id: switch.garage_front1
+    service: light.turn_off
+  - delay: 00:15
+- id: Chicken Heat Off
+  alias: Chicken Heat Off
+  trigger:
+  - above: '40'
+    entity_id: sensor.chicken_coop_temp
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.xmas_tree
+    service: switch.turn_off
+- id: Chicken Heat On
+  alias: Chicken Heat On
+  trigger:
+  - below: '32'
+    entity_id: sensor.chicken_coop_temp
+    platform: numeric_state
+  condition: []
+  action:
+  - data: {}
+    service: switch.turn_on
+    entity_id: switch.xmas_tree
+- id: ChickenCoopHot
+  alias: Chicken Coop Hot
+  trigger:
+  - above: '50'
+    entity_id: sensor.chicken_coop_temp
+    platform: numeric_state
+  condition: []
+  action:
+  - service: notify.pushnotify_busterpixel2xl
+    data:
+      message: 'Chicken Coop is over 50 . {{ states.sensor.time.state }} '
+  - delay: 00:00:30
+  - service: notify.pushnotify_busterpixel2xl
+    data:
+      message: 'Chicken Coop is over 50 . {{ states.sensor.time.state }} '
+  - delay: 00:00:30
+  - service: notify.pushnotify_busterpixel2xl
+    data:
+      message: 'Chicken Coop is over 50 . {{ states.sensor.time.state }} '
+- id: '1560606068245'
+  alias: Restart NodeRed Watchdog
+  trigger:
+  - entity_id: sensor.node_red
+    from: OK
+    platform: state
+    to: unknown
+  condition: []
+  action:
+  - data:
+      entity_id: switch.nodered
+    service: switch.turn_off
+  - delay: '12'
+  - data:
+      entity_id: switch.nodered
+    service: switch.turn_on

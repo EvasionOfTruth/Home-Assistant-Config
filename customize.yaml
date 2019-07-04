@@ -1,0 +1,340 @@
+automation.matt_away:
+  hidden: true
+automation.matt_home:
+  hidden: true
+automation.lyssa_away:
+  hidden: true
+automation.lyssa_home:
+  hidden: true
+cover.left:
+  device_class: garage
+  friendly_name: Left Garage Door
+cover.right:
+  device_class: garage
+  friendly_name: Right Garage Door
+device_tracker.busterpixel2:
+  friendly_name: Buster Phone
+device_tracker.ipad:
+  friendly_name: Lyssa iPad
+device_tracker.android1d9022f7f5a425d6:
+  friendly_name: Lyssa Phone
+device_tracker.android67249b5eb6bbeab7:
+  friendly_name: Evan Tablet
+device_tracker.android62471900e1a94ccd:
+  friendly_name: Evan Tablet2
+device_tracker.10f1f28849ee:
+  friendly_name: Matt Phone
+group.outside_lights:
+  friendly_name: Outside Lights
+  emulated_hue_hidden: false
+group.bedroom_lights:
+  friendly_name: Bedroom lights
+  emulated_hue_hidden: false
+group.Evans_Bedroom:
+  friendly_name: Evans Bedroom
+  emulated_hue_hidden: false
+group.Living_Room_Lights:
+  friendly_name: Living Room Lights
+  emulated_hue_hidden: false
+group.all_automations:
+  hidden: false
+  emulated_hue_hidden: true
+group.all_scripts:
+  hidden: false
+  emulated_hue_hidden: true
+group.bedroom:
+  friendly_name: Bedroom
+light.kitchen_led:
+  friendly_name: Kitchen Lights
+  emulated_hue_hidden: false
+  emulated_hue_name: Kitchen Lights
+light.dollhouse_level:
+  friendly_name: Doll House
+  emulated_hue_hidden: false
+  emulated_hue_name: Doll House
+light.lvngroomlght_frnt_level:
+  friendly_name: Left Light
+  emulated_hue_hidden: false
+light.nightstand_level:
+  friendly_name: Buster Light
+  emulated_hue_hidden: false
+light.wall_level:
+  friendly_name: Wall Light
+  emulated_hue_hidden: false
+light.bedroom_led:
+  friendly_name: Bedroom Led
+  emulated_hue_hidden: false
+  emulated_hue_name: bed led
+light.evan_fort:
+  friendly_name: Evans Fort
+  emulated_hue_hidden: false
+  emulated_hue_name: Fort
+light.evan_led:
+  friendly_name: Evan Led
+  emulated_hue_hidden: false
+  emulated_hue_name: Evan led
+light.zooz_unknown_typeb112_id261c_level:
+  friendly_name: Back Led
+  emulated_hue_hidden: false
+  emulated_hue_name: Sofa Led
+light.zooz_unknown_typeb112_id261c_level_2:
+  friendly_name: Front Led
+  emulated_hue_hidden: false
+  emulated_hue_name: Game Room Led
+light.zooz_unknown_typeb112_id261c_level_4:
+  friendly_name: Living Room
+  emulated_hue_hidden: false
+  emulated_hue_name: Living Room
+light.zooz_unknown_typeb112_id261c_level_3:
+  friendly_name: Porch Light
+  emulated_hue_hidden: false
+  emulated_hue_name: Porch
+light.zooz_unknown_typeb112_id261c_level_5:
+  friendly_name: Bedroom Ceiling
+  emulated_hue_hidden: false
+  emulated_hue_name: Bedroom Ceiling
+light.zooz_unknown_typeb112_id261c_level_6:
+  friendly_name: Evan Ceiling
+  emulated_hue_hidden: false
+  emulated_hue_name: Evan Ceiling
+light.linear_pd300z2_plugin_dimmer_module_level_2:
+  friendly_name: Buster Light
+  emulated_hue_hidden: false
+  emulated_hue_name: Buster Light
+light.zooz_unknown_typeb112_id261c_level_7:
+  friendly_name: Dining Room
+  emulated_hue_hidden: false
+  emulated_hue_name: Dining Room
+light.linear_pd300z2_plugin_dimmer_module_level:
+  friendly_name: Salt Light
+  emulated_hue_hidden: false
+  emulated_hue_name: Salt Light
+light.zooz_unknown_typeb112_id261c_level_9:
+  friendly_name: Evan Bathroom
+  emulated_hue_hidden: false
+  emulated_hue_name: Evan Bathroom
+light.zooz_unknown_typeb112_id261c_level_8:
+  emulated_hue_name: Spare Bedroom
+  friendly_name: Spare Bedroom
+lock.schlage_fe599gr_wireless_door_lock_locked:
+  friendly_name: Back Door Lock
+media_player.computer_room:
+  emulated_hue_hidden: true
+media_player.computerroom_kodi:
+  emulated_hue_hidden: true
+media_player.living_room:
+  friendly_name: Living Room Chromecast
+  emulated_hue_hidden: true
+media_player.living_room_home:
+  emulated_hue_hidden: true
+media_player.livingroom_kodi:
+  emulated_hue_hidden: true
+media_player.txnr525_0009b0d0a09f:
+  emulated_hue_hidden: false
+  emulated_hue_name: stereo
+remote.watchkodi:
+  emulated_hue_hidden: false
+  emulated_hue_name: a movie
+remote.watchchromecast:
+  emulated_hue_hidden: false
+  emulated_hue_name: Chromecast
+remote.poweroff:
+  emulated_hue_hidden: false
+  emulated_hue_name: Power Off
+remote.playxbox:
+  emulated_hue_hidden: false
+  emulated_hue_name: Xbox
+remote.playps4:
+  emulated_hue_hidden: false
+  emulated_hue_name: Playstation
+remote.playswitch:
+  emulated_hue_hidden: false
+  emulated_hue_name: Switch
+sensor.cmpc_generic_memory_data_available_memory:
+  friendly_name: Available Memory
+sensor.cmpc_micron_1100_sata_256gb_temperatures_temperature:
+  friendly_name: C 256GB Temperature
+sensor.cmpc_micron_1100_sata_256gb_load_used_space:
+  friendly_name: C 256GB Used
+sensor.cmpc_samsung_hd204ui_temperatures_temperature:
+  friendly_name: D 2TB Temperature
+sensor.cmpc_samsung_hd204ui_load_used_space:
+  friendly_name: D 2TB Used
+sensor.kitchen_humidity:
+  icon: mdi:water-percent
+sensor.evanroomhumidity:
+  icon: mdi:water-percent
+sensor.game_room_humidity:
+  icon: mdi:water-percent
+sensor.livingroomhumidity:
+  icon: mdi:water-percent
+sensor.bedroomhumidity:
+  icon: mdi:water-percent
+sensor.spare_room_humidity:
+  icon: mdi:water-percent
+sensor.kitchensensorbattery:
+  icon: mdi:battery
+sensor.backdoorbattery:
+  icon: mdi:battery
+sensor.backdoorsensorbattery:
+  icon: mdi:battery
+sensor.frontdoorbattery:
+  icon: mdi:battery
+sensor.frontdoorsensorbattery:
+  icon: mdi:battery
+sensor.evanbathroombattery:
+  icon: mdi:battery
+sensor.gameroomsensorbattery:
+  icon: mdi:battery
+sensor.bdrmbattery:
+  icon: mdi:battery
+scene.bedroom_bright:
+  emulated_hue_hidden: false
+  emulated_hue_name: bedroom bright
+scene.bedroom_dim:
+  emulated_hue_hidden: false
+  emulated_hue_name: bedroom dim
+scene.living_room_bright:
+  emulated_hue_hidden: false
+  emulated_hue_name: living room bright
+scene.movie_time:
+  emulated_hue_hidden: false
+  emulated_hue_name: movie time
+scene.shutdown:
+  emulated_hue_hidden: false
+  emulated_hue_name: sleepy time
+scene.bed_red:
+  emulated_hue_hidden: false
+  emulated_hue_name: bed red
+scene.bed_blue:
+  emulated_hue_hidden: false
+  emulated_hue_name: bed blue
+scene.bed_purple:
+  emulated_hue_hidden: false
+  emulated_hue_name: bed purple
+scene.bed_white:
+  emulated_hue_hidden: false
+  emulated_hue_name: bed white
+scene.fort_red:
+  emulated_hue_hidden: false
+  emulated_hue_name: fort red
+scene.fort_blue:
+  emulated_hue_hidden: false
+  emulated_hue_name: fort blue
+scene.fort_purple:
+  emulated_hue_hidden: false
+  emulated_hue_name: fort purple
+scene.fort_white:
+  emulated_hue_hidden: false
+  emulated_hue_name: fort white
+switch.bedroom_light:
+  friendly_name: Bedroom light
+  emulated_hue_hidden: false
+  emulated_hue_name: Bedroom Light
+switch.closet_switch:
+  friendly_name: Bedroom Closet
+  emulated_hue_hidden: false
+switch.evans_bed_light:
+  friendly_name: Evans Bed
+  emulated_hue_hidden: false
+switch.crazy_Light:
+  friendly_name: Crazy Light
+  emulated_hue_hidden: false
+switch.server_fan:
+  friendly_name: Server Fan
+  emulated_hue_hidden: false
+  emulated_hue_name: Server Fan
+  icon: mdi:fan
+switch.zooz_zen23_toggle_switch_v2_switch:
+  friendly_name: Pantry
+  emulated_hue_hidden: false
+  emulated_hue_name: Pantry
+switch.zooz_zen23_toggle_switch_v2_switch_2:
+  friendly_name: Laundry Room
+  emulated_hue_hidden: false
+  emulated_hue_name: Laundry Room
+switch.zooz_zen23_toggle_switch_v2_switch_4:
+  friendly_name: Closet Light
+  emulated_hue_hidden: false
+  emulated_hue_name: Closet Light
+switch.inovelli_unknown_type6000_id6000_switch:
+  friendly_name: Outside Switch
+  emulated_hue_hidden: false
+  emulated_hue_name: Outside Switch
+zwave.zooz_zen23_toggle_switch_v2:
+  friendly_name: Pantry
+  emulated_hue_hidden: false
+  emulated_hue_name: Pantry
+zwave.zooz_zen23_toggle_switch_v2_2:
+  friendly_name: LaundryRoom
+  node_name: LaundryRoom
+zwave.linear_pd300z2_plugin_dimmer_module_2:
+  node_name: Buster Light
+  friendly_name: BusterLight
+zwave.zooz_zen23_toggle_switch_v2_4:
+  node_name: ClosetLight
+  friendly_name: ClosetLight
+zwave.inovelli_unknown_type6000_id6000:
+  friendly_name: OutsideSwitch
+  node_name: Outside Switch
+zwave.zooz_unknown_typeb112_id261c_7:
+  friendly_name: Dining Room
+  node_name: Dining Room
+zwave.zooz_unknown_typeb112_id261c_8:
+  friendly_name: Spare Bedroom
+  node_name: Spare Bedroom
+zwave.zooz_unknown_typeb112_id261c_9:
+  friendly_name: Evan Bathroom
+  node_name: Evan Bathroom
+sensor.lvngrmbattery:
+  icon: mdi:battery
+zwave.zooz_unknown_typeb112_id261c_3:
+  location: Porch
+sensor.bathroombattery:
+  icon: mdi:battery
+sensor.zooz_zse40_4in1_sensor_relative_humidity_evnbthrm:
+  friendly_name: Evan Bathroom Humidity
+sensor.zooz_zse40_4in1_sensor_luminance_evnbthrm:
+  friendly_name: Evan Bathroom Luminance
+sensor.zooz_zse40_4in1_sensor_temperature_evnbthrm:
+  friendly_name: Evan Bathroom Temperature
+switch.coffee_maker:
+  friendly_name: Doll House Heater
+light.doll_house_back:
+  friendly_name: Doll House Back
+sensor.coffee_maker_current:
+  friendly_name: Doll House Heater Current
+sensor.coffee_maker_energy:
+  friendly_name: Doll House Heater Energy
+sensor.coffee_maker_power:
+  friendly_name: Doll House Heater Power
+sensor.coffee_maker_voltage:
+  friendly_name: Doll House Heater Voltage
+light.doll_house_front:
+  friendly_name: Doll House Front
+device_tracker.b4_f7_a1_e4_da_fd:
+  friendly_name: Buster Wifi
+device_tracker.08_d4_6a_a2_42_2d:
+  friendly_name: Lyssa Wifi
+sensor.garagebattery:
+  icon: mdi:battery
+sensor.evanroombattery:
+  icon: mdi:battery
+sensor.zooz_zse40_4in1_sensor_appliance_bedroom:
+  hidden: true
+sensor.zooz_zse40_4in1_sensor_alarm_type_bedroom:
+  hidden: true
+device_tracker.24_da_9b_e7_a3_8f:
+  friendly_name: Matt Phone?
+device_tracker.3c_28_6d_06_5a_88:
+  friendly_name: Matt Phone-2? Google
+switch.sonoff14:
+  friendly_name: Water Bowl
+switch.strip06:
+  friendly_name: PacMan
+switch.strip07:
+  friendly_name: Space Invaders
+switch.strip10:
+  friendly_name: Evan Heater
+sensor.sidedoorsensorbattery:
+  icon: mdi:battery

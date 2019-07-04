@@ -1,0 +1,161 @@
+all_off:
+  alias: Turn off all devices
+  sequence:
+  - event: LOGBOOK_ENTRY
+    event_data:
+      message: Nobody is home. Turning everything off.
+      name: EVENT
+  - data:
+      entity_id: group.Living_Room_Lights
+    service: homeassistant.turn_off
+  - data:
+      entity_id: light.stairs_level
+    service: homeassistant.turn_off
+  - data:
+      entity_id: group.bedroom
+    service: homeassistant.turn_off
+  - data:
+      entity_id: remote.harmony
+    service: remote.turn_off
+  - data:
+      entity_id: light.bedroom_led
+    service: homeassistant.turn_off
+  - data:
+      entity_id: light.dollhouse_level
+    service: homeassistant.turn_off
+  - data:
+      message: Nobody is home. Turning everything off.
+    service: notify.buster
+closet_timer:
+  alias: Turn off closet light after 10 minutes
+  sequence:
+  - delay: 00:10
+  - data:
+      entity_id: switch.closet_light
+    service: homeassistant.turn_off
+pantry_timer:
+  alias: Turn off pantry light after 10 minutes
+  sequence:
+  - delay: 00:10
+  - data:
+      entity_id: switch.pantry_switch
+    service: homeassistant.turn_off
+timed_lamp:
+  alias: Turn on lamp and set timer
+  sequence:
+  - service: script.turn_off
+    data:
+      entity_id: script.timer_off
+  - service: light.turn_on
+    data:
+      entity_id: light.lvngroomlght_frnt_level
+      brightness: 46
+  - service: script.turn_on
+    data:
+      entity_id: script.timer_off
+kitchenled:
+  alias: Turn on kitchen lights and set timer
+  sequence:
+  - service: script.turn_off
+    data:
+      entity_id: script.kitchen_off
+  - service: light.turn_on
+    data:
+      entity_id: light.kitchenceiling
+      brightness: 15
+  - service: script.turn_on
+    data:
+      entity_id: script.kitchen_off
+kitchen_off:
+  alias: Turn off kitchen lights after 5 minutes
+  sequence:
+  - delay:
+      minutes: 5
+  - condition: template
+    value_template: "{% if state_attr('light.kitchenceiling', 'brightness') | float < 4 %}true{% else %}false{% endif %}"
+  - data:
+      entity_id: light.kitchenceiling
+    service: light.turn_off
+evanbathroomlight:
+  alias: Turn on bathroom light and set timer
+  sequence:
+  - service: script.turn_off
+    data:
+      entity_id: script.evanbthrm_off
+  - service: light.turn_on
+    data:
+      entity_id: light.evan_bathroom
+      brightness: 45
+  - service: script.turn_on
+    data:
+      entity_id: script.evanbthrm_off
+evanbthrm_off:
+  alias: Turn off bathroom light after 15 minutes
+  sequence:
+  - delay:
+      minutes: 15
+  - condition: template
+    value_template: "{% if state_attr('light.evan_bathroom', 'brightness') | float < 45 %}true{% else %}false{% endif %}"
+  - data:
+      entity_id: light.evan_bathroom
+    service: light.turn_off
+toiletlight:
+  alias: Turn on toliet light and set timer
+  sequence:
+  - service: script.turn_off
+    data:
+      entity_id: script.toilet_off
+  - service: light.turn_on
+    data:
+      entity_id: light.toilet
+      brightness: 45
+  - service: script.turn_on
+    data:
+      entity_id: script.toilet_off
+toilet_off:
+  alias: Turn off toilet light after 10 minutes
+  sequence:
+  - delay:
+      minutes: 10
+  - condition: template
+    value_template: "{% if state_attr('light.toilet', 'brightness') | float < 45 %}true{% else %}false{% endif %}"
+  - data:
+      entity_id: light.toilet
+    service: light.turn_off
+timer_off:
+  alias: Turn off lamp after 10 minutes
+  sequence:
+  - delay:
+      minutes: 10
+  - data:
+      entity_id: light.lvngroomlght_frnt_level
+    service: light.turn_off
+input_select_harmony:
+  alias: Start Remote activity from input select
+  sequence:
+    service: remote.turn_on
+    data_template:
+      entity_id: remote.harmony
+      activity: "{% if is_state(\"input_select.remote\", \"PowerOff\") %}\n    -1\n\
+        {% elif is_state(\"input_select.remote\", \"Watch Kodi\") %}\n    23483239\n\
+        {% elif is_state(\"input_select.remote\", \"Watch Chromecast\") %}\n    23483470\n\
+        {% elif is_state(\"input_select.remote\", \"Play PS4\") %}\n    23483324\n\
+        {% elif is_state(\"input_select.remote\", \"Play Xbox\") %}\n    34890593\n\
+        {% elif is_state(\"input_select.remote\", \"Wacth Roku\") %}\n    34885647\n\
+        {% elif is_state(\"input_select.remote\", \"Watch Netflix\") %}\n    34885876\n\
+        {% elif is_state(\"input_select.remote\", \"Play Wii U\") %}\n    34885322\n\
+        {% endif %}"
+restart_ha:
+  sequence:
+  - event: LOGBOOK_ENTRY
+    event_data:
+      name: EVENT
+      message: Restarting Home Assistant
+  - service: notify.buster
+    data:
+      message: Restarting Home Assistant at {{ states('sensor.date__time') }}
+  - service: shell_command.restart_ha
+start_zwave_update:
+  alias: Zwave Map
+  sequence:
+    - service: shell_command.zwave_update

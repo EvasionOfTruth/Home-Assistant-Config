@@ -1,0 +1,192 @@
+google_actions:
+  filter:
+    exclude_entities:
+      - switch.grafana
+      - switch.headphones_buster
+      - switch.headphones_lyssa
+      - switch.influxdb
+      - switch.minecraft
+      - switch.nodered
+      - switch.plex
+      - switch.radarr
+      - switch.sabnzbd
+      - switch.sonarr
+      - input_boolean.backdoor_opened
+      - input_boolean.bathroom_motion
+      - input_boolean.buster_home
+      - input_boolean.evan_bathroom_motion
+      - input_boolean.evan_heat_off
+      - input_boolean.evan_heat_on
+      - input_boolean.evan_turn_off_closet_light
+      - input_boolean.frontdoor_opened
+      - input_boolean.garage_backdoor_opened
+      - input_boolean.kitchen_motion
+      - input_boolean.turn_off_closet_light
+    exclude_domains:
+      - group
+      - media_player
+      - climate
+      - script
+  entity_config:
+    switch.attic_light:
+      name: Attic
+      room: Attic
+    light.living_room:
+      name: Living Room Ceiling 
+      room: Living Room
+    switch.left_light:
+      name: Left Light
+      room: Living Room
+    light.right_light:
+      name: Right Light
+      room: Living Room
+    light.gameroomfrontled_level:
+      name: Front Led
+      room: Game Room
+    light.gameroombackled_level:
+      name: Back Led
+      room: Game Room
+    switch.strip06:
+      name: Pac Man
+      room: Game Room
+    switch.strip07:
+      name: Space Invaders
+      room: Game Room
+    scene.movie_time:
+      name: Movie Time
+      room: Game Room
+    switch.server_fan:
+      name: Server Fan
+      room: Game Room
+    light.dollhouse_level:
+      name: Doll House
+      room: Evans Room
+    light.evan_fort:
+      name: Evan Fort
+      room: Evans Room
+    switch.crazy_light:
+      name: Crazy Light
+      room: Evans Room
+    light.evnceiling_level:
+      name: Evan Ceiling
+      room: Evans Room
+    switch.evan_tree:
+      name: Evan Tree
+      room: Evans Room
+    switch.strip10:
+      name: Evans Heater
+      room: Evans Room
+    light.doll_house_back:
+      name: Doll House Back
+      room: Evans Room
+    light.doll_house_front:
+      name: Doll House Front
+      room: Evans Room
+    switch.doll_house_heater:
+      name: Doll House Heater
+      room: Evans Room
+    switch.evan_closet:
+      name: Evans Closet
+      room: Evans Room
+    scene.fort_blue:
+      name: Fort Blue
+      room: Evans Room
+    scene.fort_purple:
+      name: Fort Purple
+      room: Evans Room
+    scene.fort_red:
+      name: Fort Red
+      room: Evans Room
+    scene.fort_white:
+      name: Fort White
+      room: Evans Room
+    switch.bedroom_light:
+      name: Bedroom Light
+      room: Bedroom
+    light.bedroomceiling_level:
+      name: Bedroom Ceiling
+      room: Bedroom
+    light.buster_light:
+      name: Buster Light
+      room: Bedroom
+    switch.closet_light:
+      name: Closet Light
+      room: Bedroom
+    light.salt_light:
+      name: Salt Light
+      room: Bedroom
+    light.zooz_bathroom_vanity:
+      name: Vanity
+      room: Bathroom
+    light.toilet:
+      name: Toilet
+      room: Bathroom
+    light.tub:
+      name: Tub
+      room: Bathroom
+    switch.shower:
+      name: Shower
+      room: Bathroom
+    light.kitchenceiling:
+      name: Kitchen Ceiling
+      room: Kitchen
+    switch.pantry_switch:
+      name: Pantry
+      room: Kitchen
+    switch.toaster:
+      name: Toaster
+      room: Kitchen
+    light.kitchensink:
+      name: Sink
+      room: Kitchen
+    light.kitchenbar:
+      name: Bar
+      room: Kitchen
+    lock.backdoor_locked:
+      name: Back Door Lock
+      room: Kitchen
+    switch.outside_switch_switch:
+      name: Outside Switch
+      room: Outside
+    light.porch:
+      name: Porch
+      room: Outside
+    switch.decklights:
+      name: Deck Lights
+      room: Outside
+    switch.deck_motion:
+      name: Deck Motion
+      room: Outside
+    switch.xmas_tree:
+      name: Coop Heater
+      room: Outside
+    light.dining_room:
+      name: Dining Room
+      room: Dining Room
+    light.spare_bedroom:
+      name: Spare Bedroom
+      room: Spare Bedroom
+    light.evan_bathroom:
+      name: Evan Bathroom
+      room: Evan Bathroom
+    cover.left:
+      name: Left door
+      room: Garage
+    cover.right:
+      name: Right door
+      room: Garage
+    switch.garage_back1:
+      name: Back Light
+      room: Garage
+    switch.garage_front1:
+      name: Front Light
+      room: Garage
+    light.frontdoor:
+      name: Front Door Light
+      room: Front Hallway
+    lock.frontdoor_deadbolt_locked:
+      name: Front Door Lock
+      room: Front Hallway
+    switch.laundry_room1:
+      name: Laundry Room
+      room: Laundry Room

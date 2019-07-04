@@ -1,0 +1,22 @@
+#####MEDIA PLAYERS#####
+- platform: plex
+- platform: kodi
+  host: http://192.168.0.35
+  name: LivingRoom Kodi
+  port: 80
+  username: kodi
+  password: kodi
+  
+- platform: kodi
+  host: http://192.168.0.113
+  name: ComputerRoom Kodi
+  port: 80
+  username: kodi
+  password: kodi
+  
+- platform: onkyo
+  name: receiver
+  sources:
+    pc: 'PS4'
+    bd-dvd: 'WDHD TV'
+    tv-cd: 'ChromeCast'

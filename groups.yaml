@@ -1,0 +1,48 @@
+  turn_off_switches:
+    name: turn off switches
+    entities:
+      - switch.attic_light
+      - switch.bedroom_light
+      - switch.closet_light
+      - switch.crazy_light
+      - switch.doll_house_heater
+      - switch.evanscloset
+      - switch.evan_tree
+      - switch.garage_back1
+      - switch.garage_front1
+      - switch.laundry_room1
+      - switch.left_light
+      - switch.outside_switch_switch
+      - switch.pantry_switch
+      - switch.shower
+      - switch.strip05
+      - switch.strip06
+      - switch.strip07
+      - switch.strip10
+      - switch.toaster
+  turn_off_lights:
+    name: turn off lights
+    entities:
+      - light.bedroomceiling_level
+      - light.buster_light
+      - light.dining_room
+      - light.doll_house_back
+      - light.doll_house_front
+      - light.dollhouse_level
+      - light.evan_bathroom
+      - light.evandesk
+      - light.evan_fort
+      - light.evnceiling_level
+      - light.frontdoor
+      - light.gameroombackled_level
+      - light.gameroomfrontled_level
+      - light.hallway
+      - light.kitchenbar1
+      - light.kitchenceiling
+      - light.kitchensink
+      - light.living_room
+      - light.salt_light
+      - light.spare_bedroom
+      - light.toilet
+      - light.tub
+      - light.zooz_bathroom_vanity

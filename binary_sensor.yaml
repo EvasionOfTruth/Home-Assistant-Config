@@ -1,0 +1,132 @@
+- platform: template
+  sensors:
+    kitchen_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_kitchen')| float > 0 }}"
+      friendly_name: "Kitchen sensor Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_alarm_level_kitchen
+
+    kitchen_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_kitchen', '3') }}"
+      friendly_name: "Kitchen sensor Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_kitchen
+- platform: template
+  sensors:
+    gameroom_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_gameroom')| float > 0 }}"
+      friendly_name: "GameRoom sensor Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_sensor_alarm_level_gameroom
+
+    gameroom_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_gameroom', '3') }}"
+      friendly_name: "GameRoom sensor Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_gameroom
+- platform: template
+  sensors:
+    evanbath_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_evnbthrm')| float > 0 }}"
+      friendly_name: "Evan BathRoom Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_sensor_alarm_level_evnbthrm
+
+    evanbath_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_evnbthrm', '3') }}"
+      friendly_name: "Evan BathRoom Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_evnbthrm
+- platform: template
+  sensors:
+    bdrm_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_bedroom')| float > 0 }}"
+      friendly_name: "Bedroom Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_sensor_alarm_level_bedroom
+
+    bdrm_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_bedroom', '3') }}"
+      friendly_name: "Bedroom Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_bedroom
+- platform: template
+  sensors:
+    lvngrm_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_livingroom')| float > 0 }}"
+      friendly_name: "LivingRoom Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_sensor_alarm_level_livingroom
+
+    lvngrm_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_livingroom', '3') }}"
+      friendly_name: "LivingRoom Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_livingroom
+- platform: template
+  sensors:
+    bathroom_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_bathroom')| float > 0 }}"
+      friendly_name: "Bathroom Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_alarm_level_bathroom
+
+    bathroom_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_bathroom', '3') }}"
+      friendly_name: "Bathroom Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_bathroom
+- platform: template
+  sensors:
+    evan_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_evanroom')| float > 0 }}"
+      friendly_name: "Evan Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_alarm_level_evanroom
+
+    evan_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_evanroom', '3') }}"
+      friendly_name: "Evan Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_evanroom
+- platform: template
+  sensors:
+    garage_sensor_motion:
+      value_template: "{{ states('sensor.zooz_zse40_4in1_sensor_alarm_level_garage')| float > 0 }}"
+      friendly_name: "Garage Motion"
+      device_class: motion
+      # entity_id: sensor.zooz_zse40_4in1_sensor_alarm_level_garage
+
+    garage_sensor_tamper:
+      value_template: "{{ is_state('sensor.zooz_zse40_4in1_sensor_burglar_garage', '3') }}"
+      friendly_name: "Garage Tamper"
+      device_class: safety
+      # entity_id: sensor.zooz_zse40_4in1_sensor_burglar_garage
+- platform: template
+  sensors:
+    front_door_status:
+      value_template: "{{ is_state('sensor.frntdrsensr_access_control', '22') }}"
+      friendly_name: "Front"
+      device_class: door
+      # entity_id: sensor.frntdrsensr_access_control
+- platform: template
+  sensors:
+    back_door_status:
+      value_template: "{{ is_state('sensor.bckdrsnsr1_access_control', '22') }}"
+      friendly_name: "Back"
+      device_class: door
+      # entity_id: sensor.bckdrsnsr1_access_control
+- platform: template
+  sensors:
+    garage_door_status:
+      value_template: "{{ is_state('sensor.hank_hkzwdws01_doorwindow_sensor_access_control_garage_back', '22') }}"
+      friendly_name: "Garage"
+      device_class: door
+      # entity_id: sensor.hank_hkzwdws01_doorwindow_sensor_access_control_garage_back
+- platform: template
+  sensors:
+    side_door_status:
+      value_template: "{{ is_state('sensor.hank_hkzwdws01_doorwindow_sensor_access_control_sidedoor', '22') }}"
+      friendly_name: "Side"
+      device_class: door
+      # entity_id: sensor.hank_hkzwdws01_doorwindow_sensor_access_control_sidedoor

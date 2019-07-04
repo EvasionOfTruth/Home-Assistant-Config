@@ -1,0 +1,700 @@
+  ##SENSORS##
+  
+  # Weather Prediction
+- platform: yr
+           
+- platform: sonarr
+  host: 192.168.0.12
+  port: 8989
+  api_key: !secret sonarr
+  monitored_conditions:
+    - upcoming
+    - commands
+  days: 5
+
+- platform: darksky
+  api_key: !secret darksky
+  monitored_conditions:
+    - summary
+    - icon
+    - nearest_storm_distance
+#    - nearest_storm_bearing
+    - precip_type
+    - precip_intensity
+    - precip_probability
+    - temperature
+#    - apparent_temperature
+#    - dew_point
+#    - wind_speed
+#    - wind_bearing
+    - cloud_cover
+    - humidity
+#    - pressure
+#    - visibility
+#    - ozone
+#    - minutely_summary
+#    - hourly_summary
+    - daily_summary
+#    - temperature_max
+#    - temperature_min
+#    - apparent_temperature_max
+#    - apparent_temperature_min
+#    - precip_intensity_max
+
+- platform: pi_hole
+  host: 192.168.0.11
+  
+- platform: mqtt
+  state_topic: "livingroom/temp"
+  name: LivingRoomTemp
+  unit_of_measurement: "°F"
+  value_template: >-
+      {%- if value_json.temperature_F|float >= 40 and value_json.temperature_F|float <= 95 -%}
+      {{ value_json.temperature_F | round(1) }}
+      {%- else -%}
+      50
+      {%- endif -%}
+      
+- platform: filter
+  name: "filtered LivingRoom temperature"
+  entity_id: sensor.LivingRoomTemp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+  
+- platform: mqtt
+  state_topic: "livingroom/temp"
+  name: LivingRoomHumidity
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.humidity }}'
+  
+- platform: mqtt
+  state_topic: "evansroom/temp"
+  name: EvanRoomTemp
+  unit_of_measurement: "°F"
+  value_template: >-
+      {%- if value_json.temperature_F|float >= 40 and value_json.temperature_F|float <= 95 -%}
+      {{ value_json.temperature_F | round(1) }}
+      {%- else -%}
+      50
+      {%- endif -%}
+      
+- platform: filter
+  name: "filtered Evan temperature"
+  entity_id: sensor.evanroomtemp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+  
+- platform: mqtt
+  state_topic: "evansroom/temp"
+  name: EvanRoomHumidity
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+  
+- platform: mqtt
+  state_topic: "bedroom/temp"
+  name: BedRoomTemp
+  unit_of_measurement: "°F"
+  value_template: >-
+      {%- if value_json.temperature_F|float >= 40 and value_json.temperature_F|float <= 95 -%}
+      {{ value_json.temperature_F | round(1) }}
+      {%- else -%}
+      50
+      {%- endif -%}
+      
+- platform: filter
+  name: "filtered BedRoom temperature"
+  entity_id: sensor.BedRoomTemp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+      
+- platform: mqtt
+  state_topic: "bedroom/temp"
+  name: BedRoomHumidity
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+  
+- platform: mqtt
+  state_topic: "kitchen/temp"
+  name: Kitchen Temp
+  unit_of_measurement: "°F"
+  value_template: >-
+      {%- if value_json.temperature_F|float >= 40 and value_json.temperature_F|float <= 95 -%}
+      {{ value_json.temperature_F | round(1) }}
+      {%- else -%}
+      50
+      {%- endif -%}
+
+- platform: filter
+  name: "filtered Kitchen temperature"
+  entity_id: sensor.Kitchen_Temp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+      
+- platform: mqtt
+  state_topic: "kitchen/temp"
+  name: Kitchen Humidity
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+  
+- platform: mqtt
+  state_topic: "gameroom/temp"
+  name: Game Room Temp
+  unit_of_measurement: "°F"
+  value_template: >-
+      {%- if value_json.temperature_F|float >= 40 and value_json.temperature_F|float <= 95 -%}
+      {{ value_json.temperature_F | round(1) }}
+      {%- else -%}
+      50
+      {%- endif -%}
+      
+- platform: filter
+  name: "filtered GameRoom temperature"
+  entity_id: sensor.Game_Room_Temp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+  
+- platform: mqtt
+  state_topic: "gameroom/temp"
+  name: Game Room Humidity
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+  
+- platform: mqtt
+  state_topic: "spareroom/temp"
+  name: Spare Room Temp
+  unit_of_measurement: "°F"
+  value_template: >-
+      {%- if value_json.temperature_F|float >= 40 and value_json.temperature_F|float <= 95 -%}
+      {{ value_json.temperature_F | round(1) }}
+      {%- else -%}
+      50
+      {%- endif -%}
+      
+- platform: filter
+  name: "filtered SpareRoom temperature"
+  entity_id: sensor.Spare_Room_Temp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+  
+- platform: mqtt
+  state_topic: "spareroom/temp"
+  name: Spare Room Humidity
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+  
+- platform: mqtt
+  state_topic: "chicken/temp"
+  name: Chicken Coop Temp
+  unit_of_measurement: "°F"
+  value_template: >-
+      {%- if value_json.temperature_F|float >= 0 and value_json.temperature_F|float <= 120 -%}
+      {{ value_json.temperature_F | round(1) }}
+      {%- else -%}
+      50
+      {%- endif -%}
+      
+- platform: filter
+  name: "filtered Coop temperature"
+  entity_id: sensor.Chicken_Coop_Temp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+  
+- platform: mqtt
+  state_topic: "chicken/temp"
+  name: Chicken Coop Humidity
+  unit_of_measurement: "%"
+  value_template: "{{ value_json.humidity }}"
+  
+- platform: mqtt
+  name: "Xmas Tree Energy"
+  state_topic: "tele/sonoff14/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Today"] }}'
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Xmas Tree Power"
+  state_topic: "tele/sonoff14/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Xmas Tree Voltage"
+  state_topic: "tele/sonoff14/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Xmas Tree Current"
+  state_topic: "tele/sonoff14/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Current"] }}'
+  unit_of_measurement: "A"
+  
+- platform: mqtt
+  name: "Toaster Energy"
+  state_topic: "tele/sonoff15/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Today"] }}'
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Toaster Power"
+  state_topic: "tele/sonoff15/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Toaster Voltage"
+  state_topic: "tele/sonoff15/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Toaster Current"
+  state_topic: "tele/sonoff15/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Current"] }}'
+  unit_of_measurement: "A"
+  
+- platform: mqtt
+  name: "Doll House Heater Energy"
+  state_topic: "tele/sonoff16/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Today"] }}'
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Doll House Heater Power"
+  state_topic: "tele/sonoff16/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Doll House Heater Voltage"
+  state_topic: "tele/sonoff16/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Doll House Heater Current"
+  state_topic: "tele/sonoff16/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Current"] }}'
+  unit_of_measurement: "A"
+  
+- platform: mqtt
+  name: "PacMan Energy"
+  state_topic: "tele/sonoff06/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Today"] }}'
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "PacMan Power"
+  state_topic: "tele/sonoff06/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "PacMan Voltage"
+  state_topic: "tele/sonoff06/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "PacMan Current"
+  state_topic: "tele/sonoff06/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Current"] }}'
+  unit_of_measurement: "A"
+
+- platform: mqtt
+  name: "Invaders Energy"
+  state_topic: "tele/sonoff07/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Today"] }}'
+  unit_of_measurement: "kWh"
+- platform: mqtt
+  name: "Invaders Power"
+  state_topic: "tele/sonoff07/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Power"] }}'
+  unit_of_measurement: "W"
+- platform: mqtt
+  name: "Invaders Voltage"
+  state_topic: "tele/sonoff07/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+  unit_of_measurement: "V"
+- platform: mqtt
+  name: "Invaders Current"
+  state_topic: "tele/sonoff07/SENSOR"
+  value_template: '{{ value_json["ENERGY"]["Current"] }}'
+  unit_of_measurement: "A"
+  
+- platform: template
+  sensors:
+    harmony:
+      value_template: '{{ states.remote.harmony.attributes.current_activity }}'
+      friendly_name: 'Media Center'
+      
+- platform: template 
+  sensors:
+    average_right_temp:
+      friendly_name: 'Average Right Temp'
+      unit_of_measurement: "°F"
+      value_template: >-
+        {{ ((float(states.sensor.spare_room_temp.state) + float(states.sensor.evanroomtemp.state) + float(states.sensor.game_room_temp.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_evanroom.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_evnbthrm.state)) / 5) | round(2) }}
+- platform: filter
+  name: "filtered Right temperature"
+  entity_id: sensor.average_right_temp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+- platform: template 
+  sensors:
+    average_left_temp:
+      friendly_name: 'Average Left Temp'
+      unit_of_measurement: "°F"
+      value_template: >-
+        {{ ((float(states.sensor.bedroomtemp.state) + float(states.sensor.livingroomtemp.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_bedroom.state) + float(states.sensor.kitchen_temp.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_bathroom.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_livingroom.state)) / 6) | round(2) }}
+- platform: filter
+  name: "filtered Left temperature"
+  entity_id: sensor.average_left_temp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+- platform: template 
+  sensors:
+    average_house_temp:
+      friendly_name: 'Average House Temp'
+      unit_of_measurement: "°F"
+      value_template: >-
+        {{ ((float(states.sensor.bedroomtemp.state) + float(states.sensor.livingroomtemp.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_bedroom.state) + float(states.sensor.kitchen_temp.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_bathroom.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_livingroom.state) + float(states.sensor.spare_room_temp.state) + float(states.sensor.evanroomtemp.state) + float(states.sensor.game_room_temp.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_evanroom.state) + float(states.sensor.zooz_zse40_4in1_sensor_temperature_evnbthrm.state)) / 11) | round(2) }}
+- platform: filter
+  name: "filtered House temperature"
+  entity_id: sensor.average_house_temp
+  filters:
+    - filter: outlier
+      window_size: 4
+      radius: 2.0
+    - filter: lowpass
+      time_constant: 10
+    - filter: time_simple_moving_average
+      window_size: 00:05
+      precision: 2
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'time_date'
+    - 'time_utc'
+
+- platform: rest
+  resource: https://pypi.python.org/pypi/homeassistant/json
+  name: HA Current Version
+  value_template: '{{ value_json.info.version }}'
+  scan_interval: 3600
+  
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /home
+    - type: disk_use_percent
+#      arg: /media/disk1
+#    - type: disk_free
+#      arg: /media/disk1
+#    - type: disk_use_percent
+#      arg: /media/disk2
+#    - type: disk_free
+#      arg: /media/disk2
+#    - type: disk_use_percent
+#      arg: /media/disk3
+#    - type: disk_free
+#      arg: /media/disk3
+#    - type: disk_use_percent
+#      arg: /media/disk4
+##    - type: disk_free
+ #     arg: /media/disk4
+#    - type: disk_use_percent
+#      arg: /media/disk5
+#    - type: disk_free
+#      arg: /media/disk5
+#    - type: disk_use_percent
+#      arg: /media/disk6
+#    - type: disk_free
+#      arg: /media/disk6
+#    - type: memory_free
+    - type: last_boot
+    - type: processor_use
+    - type: memory_use_percent
+    - type: memory_use
+    
+- platform: openhardwaremonitor
+  host: 192.168.0.111
+#- platform: google_wifi
+#  host: 192.168.0.1
+- platform: mqtt
+  name: "Cabinet Temperature"
+  state_topic: "tele/sonoff11/SENSOR"
+  value_template: "{{ value_json['SI7021'].Temperature }}"
+  unit_of_measurement: "°F"
+- platform: mqtt
+  name: "Cabinet Humidity"
+  state_topic: "tele/sonoff11/SENSOR"
+  value_template: "{{ value_json['SI7021'].Humidity }}"
+  unit_of_measurement: "%"
+
+- platform: plex
+  username: !secret plexu
+  password: !secret plexp
+  token: !secret plex_token
+
+- platform: template
+  sensors:
+    kitchensensorbattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_kitchen.attributes.battery_level }}"
+        friendly_name: "Kitchen Sensor Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_kitchen
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    gameroomsensorbattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_gameroom.attributes.battery_level }}"
+        friendly_name: "GameRoom Sensor Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_gameroom
+        unit_of_measurement: '%'       
+- platform: template
+  sensors:
+    evanbathroombattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_evnbthrm.attributes.battery_level }}"
+        friendly_name: "Evan BathRoom Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_evnbthrm
+        unit_of_measurement: '%'      
+- platform: template
+  sensors:
+    bdrmbattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_bedroom.attributes.battery_level }}"
+        friendly_name: "Bedroom Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_bedroom
+        unit_of_measurement: '%'  
+- platform: template
+  sensors:
+    lvngrmbattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_livingroom.attributes.battery_level }}"
+        friendly_name: "LivingRoom Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_livingroom
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    bathroombattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_bathroom.attributes.battery_level }}"
+        friendly_name: "Bathroom Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_bathroom
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    evanroombattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_evanroom.attributes.battery_level }}"
+        friendly_name: "Evan Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_evanroom
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    garagebattery:
+        value_template: "{{ states.zwave.zooz_zse40_4in1_sensor_garage.attributes.battery_level }}"
+        friendly_name: "Garage Battery"
+        entity_id: zwave.zooz_zse40_4in1_sensor_garage
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    frontdoorsensorbattery:
+        value_template: "{{ states.zwave.frntdrsensr.attributes.battery_level }}"
+        friendly_name: "Front Door Sensor Battery"
+        entity_id: zwave.frntdrsensr
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    backdoorsensorbattery:
+        value_template: "{{ states.zwave.bckdrsensr.attributes.battery_level }}"
+        friendly_name: "Back Door Sensor Battery"
+        entity_id: zwave.bckdrsensr
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    grgbackdoorsensorbattery:
+        value_template: "{{ states.zwave.hank_hkzwdws01_doorwindow_sensor_garage_back3.attributes.battery_level }}"
+        friendly_name: "Garage Back Door Battery"
+        entity_id: zwave.hank_hkzwdws01_doorwindow_sensor_garage_back
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    sidedoorsensorbattery:
+        value_template: "{{ states.zwave.sidedoor.attributes.battery_level }}"
+        friendly_name: "Side Door Battery"
+        entity_id: zwave.sidedoor
+        unit_of_measurement: '%'
+- platform: template
+  sensors:
+    frontdoorbattery:
+      entity_id: zwave.frontdoor_deadbolt
+      value_template: "{{ states.zwave.frontdoor_deadbolt.attributes.battery_level }}"
+      friendly_name: 'Front Door Lock Battery'
+      unit_of_measurement: '%'
+    # this sensor is intended to capture the user number that was used during
+    # the last operation that required a code to be entered.  it will persist
+    # after subsequent other events (manual locking, etc.) that didn't involve
+    # a user code
+    front_door_code:
+      friendly_name: Front Door Last Code
+      entity_id:
+        - sensensor.frontdoor_deadbolt_alarm_type
+        - sensor.frontdoor_deadbolt_alarm_level
+      value_template: >-
+        {% if is_state('sensensor.frontdoor_deadbolt_alarm_type', '18') or
+              is_state('sensensor.frontdoor_deadbolt_alarm_type', '19') %}
+          {% if not is_state('sensor.frontdoor_deadbolt_alarm_level', '0') %}
+            {{states('sensor.frontdoor_deadbolt_alarm_level')}}
+          {% else %}
+            {# just provide previous value if no user code entered #}
+            {{states('sensor.front_door_code')}}
+          {% endif %}
+        {% else %}
+          {# just provide previous value if no user code entered #}
+          {{states('sensor.front_door_code')}}
+        {% endif %}
+    front_last_action:
+      friendly_name: 'Front Door Last Action'
+      entity_id:
+        - sensensor.frontdoor_deadbolt_alarm_type
+        - sensor.frontdoor_deadbolt_alarm_level
+      value_template: >-
+        {% if is_state('sensensor.frontdoor_deadbolt_alarm_type', '18') %}
+          {% if is_state('sensor.frontdoor_deadbolt_alarm_level', '0') %}
+        Locked: Outside Keypad
+          {% else %}
+        Locked: User {{states('sensor.frontdoor_deadbolt_alarm_level')}}
+          {% endif %}
+        {% elif is_state('sensensor.frontdoor_deadbolt_alarm_type', '19') %}
+          Unlocked: User Code {{states('sensor.frontdoor_deadbolt_alarm_level')}}
+        {% elif is_state('sensensor.frontdoor_deadbolt_alarm_type', '21') %}
+          Locked: {{[ 'Outside Lock', 'Inside Deadbolt', 'Outside Keypad' ][states('sensor.frontdoor_deadbolt_alarm_level')|int]}}
+        {% elif is_state('sensensor.frontdoor_deadbolt_alarm_type', '22') %}
+          Unlocked: Inside Deadbolt
+        {% else %}
+          Unknown: {{states('sensensor.frontdoor_deadbolt_alarm_type')}}/{{states('sensor.frontdoor_deadbolt_alarm_level')}}
+        {% endif %}
+- platform: template
+  sensors:
+    backdoorbattery:
+      entity_id: zwave.backdoor
+      value_template: "{{ states.zwave.backdoor.attributes.battery_level }}"
+      friendly_name: 'Back Door Lock Battery'
+      unit_of_measurement: '%'
+    # this sensor is intended to capture the user number that was used during
+    # the last operation that required a code to be entered.  it will persist
+    # after subsequent other events (manual locking, etc.) that didn't involve
+    # a user code
+    back_door_code:
+      friendly_name: Back Door Last Code
+      entity_id:
+        - sensor.backdoor_alarm_type
+        - sensor.backdoor_alarm_level
+      value_template: >-
+        {% if is_state('sensor.backdoor_alarm_type', '18') or
+              is_state('sensor.backdoor_alarm_type', '19') %}
+          {% if not is_state('sensor.backdoor_alarm_level', '0') %}
+            {{states('sensor.backdoor_alarm_level')}}
+          {% else %}
+            {# just provide previous value if no user code entered #}
+            {{states('sensor.back_door_code')}}
+          {% endif %}
+        {% else %}
+          {# just provide previous value if no user code entered #}
+          {{states('sensor.back_door_code')}}
+        {% endif %}
+    back_last_action:
+      friendly_name: 'Back Door Last Action'
+      entity_id:
+        - sensor.backdoor_alarm_type
+        - sensor.backdoor_alarm_level
+      value_template: >-
+        {% if is_state('sensor.backdoor_alarm_type', '18') %}
+          {% if is_state('sensor.backdoor_alarm_level', '0') %}
+        Locked: Outside Keypad
+          {% else %}
+        Locked: User {{states('sensor.backdoor_alarm_level')}}
+          {% endif %}
+        {% elif is_state('sensor.backdoor_alarm_type', '19') %}
+          Unlocked: User Code {{states('sensor.backdoor_alarm_level')}}
+        {% elif is_state('sensor.backdoor_alarm_type', '21') %}
+          Locked: {{[ 'Outside Lock', 'Inside Deadbolt', 'Outside Keypad' ][states('sensor.backdoor_alarm_level')|int]}}
+        {% elif is_state('sensor.backdoor_alarm_type', '22') %}
+          Unlocked: Inside Deadbolt
+        {% else %}
+          Unknown: {{states('sensor.backdoor_alarm_type')}}/{{states('sensor.backdoor_alarm_level')}}
+        {% endif %}
+
+- platform: cert_expiry
+  host: !secret host 
+  port: 8123
+  name: SSL Cert Expires
+- platform: mqtt
+  state_topic: "blue_iris/binary_sensor/porch_motion/state"
+  name: Porch Motion
+- platform: mqtt
+  state_topic: "blue_iris/binary_sensor/bkdr_motion/state"
+  name: Deck Motion
+- platform: mqtt
+  state_topic: "blue_iris/binary_sensor/drvway_motion/state"
+  name: Driveway Motion
+- platform: mqtt
+  state_topic: "blue_iris/binary_sensor/drvwy2_motion/state"
+  name: Driveway2 Motion
+- platform: mqtt
+  state_topic: "blue_iris/binary_sensor/bkyrd_motion/state"
+  name: BackYard Motion
+- platform: mqtt
+  name: "Node RED"
+  state_topic: "checkIn/nodeRED"
+  expire_after: 300
